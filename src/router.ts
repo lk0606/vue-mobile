@@ -9,6 +9,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: () => import('./views/home/home.vue')
+    },
+    {
+      path: '/table',
+      name: 'table',
+      component: () => import('./components/table/c-table.vue')
     }
   ]
 })

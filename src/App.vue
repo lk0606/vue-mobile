@@ -6,7 +6,7 @@
 
 <script lang="ts">
   import Vue from 'vue';
-  import cTable from '@/components/c-table.vue'
+  import cTable from '@/components/table/c-table.vue'
 
   export default Vue.extend({
     name: 'home',
