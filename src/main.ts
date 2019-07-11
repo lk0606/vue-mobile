@@ -7,6 +7,10 @@ import './registerServiceWorker'
 Vue.config.productionTip = false
 // style
 import 'normalize.css'
+import '@/assets/sass/bxs-reset.scss'
+import '@/assets/sass/table.scss'
+import '@/assets/sass/public.scss'
+import '@/assets/sass/scroll-reset.scss'
 // import 'lib-flexible'
 
 // import '@/assets/sass/responsive.scss'

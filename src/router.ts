@@ -14,6 +14,11 @@ export default new Router({
       path: '/table',
       name: 'table',
       component: () => import('./components/table/c-table.vue')
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: () => import('./views/test/test.vue')
     }
   ]
 })

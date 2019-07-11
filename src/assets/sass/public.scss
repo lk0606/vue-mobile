@@ -1,0 +1,30 @@
+
+*{
+    box-sizing: border-box;
+    &.before, &.after {
+        box-sizing: border-box;
+    }
+}
+
+.oa {
+    overflow: auto;
+}
+.oh {
+    overflow: hidden;
+}
+.ox-a {
+    overflow-x: auto;
+}
+.oy-a {
+    overflow-y: auto;
+}
+
+
+
+// flex
+.df {
+    display: flex;
+}
+.flex-1 {
+    flex: 1;
+}

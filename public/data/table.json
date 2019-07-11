@@ -1,0 +1,280 @@
+{
+  "code": 200,
+  "msg": null,
+  "data": [
+    {
+      "riskType": 1,
+      "riskNameDesc": "主险/其他附加险",
+      "riskCode": "1039",
+      "productBonusPolicyBoList": [
+        {
+          "payTermDesc": "10年交",
+          "payTerm": 10,
+          "productBonusBoList": [
+            {
+              "bonusRate": 10.00,
+              "formatBonusRate": null,
+              "supportedYear": 1,
+              "paymentTerm": 10,
+              "paymentTermUnit": "y",
+              "startPaymentTerm": null,
+              "paymentTermDesc": null,
+              "premium": null,
+              "riskBonus": null,
+              "riskCode": null,
+              "riskType": null,
+              "missionRate": 1.00,
+              "missionDesc": "1%",
+              "bonus_desc": "10%"
+            },
+            {
+              "bonusRate": 5.00,
+              "formatBonusRate": null,
+              "supportedYear": 2,
+              "paymentTerm": 10,
+              "paymentTermUnit": "y",
+              "startPaymentTerm": null,
+              "paymentTermDesc": null,
+              "premium": null,
+              "riskBonus": null,
+              "riskCode": null,
+              "riskType": null,
+              "missionRate": null,
+              "missionDesc": null,
+              "bonus_desc": "5%"
+            }
+          ]
+        },
+        {
+          "payTermDesc": "15年交",
+          "payTerm": 15,
+          "productBonusBoList": [
+            {
+              "bonusRate": 20.00,
+              "formatBonusRate": null,
+              "supportedYear": 1,
+              "paymentTerm": 15,
+              "paymentTermUnit": "y",
+              "startPaymentTerm": null,
+              "paymentTermDesc": null,
+              "premium": null,
+              "riskBonus": null,
+              "riskCode": null,
+              "riskType": null,
+              "missionRate": 2.00,
+              "missionDesc": "2%",
+              "bonus_desc": "20%"
+            },
+            {
+              "bonusRate": 10.00,
+              "formatBonusRate": null,
+              "supportedYear": 2,
+              "paymentTerm": 15,
+              "paymentTermUnit": "y",
+              "startPaymentTerm": null,
+              "paymentTermDesc": null,
+              "premium": null,
+              "riskBonus": null,
+              "riskCode": null,
+              "riskType": null,
+              "missionRate": null,
+              "missionDesc": null,
+              "bonus_desc": "10%"
+            }
+          ]
+        },
+        {
+          "payTermDesc": "20年交",
+          "payTerm": 20,
+          "productBonusBoList": [
+            {
+              "bonusRate": 30.00,
+              "formatBonusRate": null,
+              "supportedYear": 1,
+              "paymentTerm": 20,
+              "paymentTermUnit": "y",
+              "startPaymentTerm": null,
+              "paymentTermDesc": null,
+              "premium": null,
+              "riskBonus": null,
+              "riskCode": null,
+              "riskType": null,
+              "missionRate": 3.00,
+              "missionDesc": "3%",
+              "bonus_desc": "30%"
+            },
+            {
+              "bonusRate": 15.00,
+              "formatBonusRate": null,
+              "supportedYear": 2,
+              "paymentTerm": 20,
+              "paymentTermUnit": "y",
+              "startPaymentTerm": null,
+              "paymentTermDesc": null,
+              "premium": null,
+              "riskBonus": null,
+              "riskCode": null,
+              "riskType": null,
+              "missionRate": null,
+              "missionDesc": null,
+              "bonus_desc": "15%"
+            }
+          ]
+        },
+        {
+          "payTermDesc": "30年交",
+          "payTerm": 30,
+          "productBonusBoList": [
+            {
+              "bonusRate": 40.00,
+              "formatBonusRate": null,
+              "supportedYear": 1,
+              "paymentTerm": 30,
+              "paymentTermUnit": "y",
+              "startPaymentTerm": null,
+              "paymentTermDesc": null,
+              "premium": null,
+              "riskBonus": null,
+              "riskCode": null,
+              "riskType": null,
+              "missionRate": 4.00,
+              "missionDesc": "4%",
+              "bonus_desc": "40%"
+            },
+            {
+              "bonusRate": 20.00,
+              "formatBonusRate": null,
+              "supportedYear": 2,
+              "paymentTerm": 30,
+              "paymentTermUnit": "y",
+              "startPaymentTerm": null,
+              "paymentTermDesc": null,
+              "premium": null,
+              "riskBonus": null,
+              "riskCode": null,
+              "riskType": null,
+              "missionRate": null,
+              "missionDesc": null,
+              "bonus_desc": "20%"
+            }
+          ]
+        },
+        {
+          "payTermDesc": "15年交",
+          "payTerm": 15,
+          "productBonusBoList": [
+            {
+              "bonusRate": 20.00,
+              "formatBonusRate": null,
+              "supportedYear": 1,
+              "paymentTerm": 15,
+              "paymentTermUnit": "y",
+              "startPaymentTerm": null,
+              "paymentTermDesc": null,
+              "premium": null,
+              "riskBonus": null,
+              "riskCode": null,
+              "riskType": null,
+              "missionRate": 2.00,
+              "missionDesc": "2%",
+              "bonus_desc": "20%"
+            },
+            {
+              "bonusRate": 10.00,
+              "formatBonusRate": null,
+              "supportedYear": 2,
+              "paymentTerm": 15,
+              "paymentTermUnit": "y",
+              "startPaymentTerm": null,
+              "paymentTermDesc": null,
+              "premium": null,
+              "riskBonus": null,
+              "riskCode": null,
+              "riskType": null,
+              "missionRate": null,
+              "missionDesc": null,
+              "bonus_desc": "10%"
+            }
+          ]
+        },
+        {
+          "payTermDesc": "20年交",
+          "payTerm": 20,
+          "productBonusBoList": [
+            {
+              "bonusRate": 30.00,
+              "formatBonusRate": null,
+              "supportedYear": 1,
+              "paymentTerm": 20,
+              "paymentTermUnit": "y",
+              "startPaymentTerm": null,
+              "paymentTermDesc": null,
+              "premium": null,
+              "riskBonus": null,
+              "riskCode": null,
+              "riskType": null,
+              "missionRate": 3.00,
+              "missionDesc": "3%",
+              "bonus_desc": "30%"
+            },
+            {
+              "bonusRate": 15.00,
+              "formatBonusRate": null,
+              "supportedYear": 2,
+              "paymentTerm": 20,
+              "paymentTermUnit": "y",
+              "startPaymentTerm": null,
+              "paymentTermDesc": null,
+              "premium": null,
+              "riskBonus": null,
+              "riskCode": null,
+              "riskType": null,
+              "missionRate": null,
+              "missionDesc": null,
+              "bonus_desc": "15%"
+            }
+          ]
+        },
+        {
+          "payTermDesc": "30年交",
+          "payTerm": 30,
+          "productBonusBoList": [
+            {
+              "bonusRate": 40.00,
+              "formatBonusRate": null,
+              "supportedYear": 1,
+              "paymentTerm": 30,
+              "paymentTermUnit": "y",
+              "startPaymentTerm": null,
+              "paymentTermDesc": null,
+              "premium": null,
+              "riskBonus": null,
+              "riskCode": null,
+              "riskType": null,
+              "missionRate": 4.00,
+              "missionDesc": "4%",
+              "bonus_desc": "40%"
+            },
+            {
+              "bonusRate": 20.00,
+              "formatBonusRate": null,
+              "supportedYear": 2,
+              "paymentTerm": 30,
+              "paymentTermUnit": "y",
+              "startPaymentTerm": null,
+              "paymentTermDesc": null,
+              "premium": null,
+              "riskBonus": null,
+              "riskCode": null,
+              "riskType": null,
+              "missionRate": null,
+              "missionDesc": null,
+              "bonus_desc": "20%"
+            }
+          ]
+        }
+      ],
+      "productBonusPolicyInsureTermBo": null
+    }
+  ]
+}

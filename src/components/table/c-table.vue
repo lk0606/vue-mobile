@@ -1,24 +1,37 @@
 <template>
 <div class='c-table-container'>
-  <div class="table-container">
-<!--      <div class="title-wrap thin-border-bottom bx-hairline&#45;&#45;bottom">-->
-<!--        <h1-->
-<!--            v-if="title"-->
-<!--            class="table-title">{{title}}</h1>-->
-<!--        <bxs-icon name="close" color="#ccc" size="1.2rem" @click="hide"></bxs-icon>-->
-<!--      </div>-->
-      <table class="c-table">
+  <div class="table-container oa" @scroll="handleScroll">
+<!--    <bxs-button type="primary" @click="show=true">半浮层</bxs-button>-->
+<!--    <bxs-bottom-sheets-->
+<!--        v-model="show"-->
+<!--        :hideHeader="true"-->
+<!--        title="自定义标题">-->
+<!--      <bxs-button type="primary" @click="show=false">组件内</bxs-button>-->
+<!--    </bxs-bottom-sheets>-->
+
+      <table class="c-table bx-hairline--surround" cellpadding="0" cellspacing="0">
         <thead
             class="c-table-thead"
         >
           <tr >
             <th
-                v-for="(head, hIndex) in tableHeader"
-                :key="head.prop"
+                v-for="(head, hIndex) in tableHeader" :key="head.prop"
+                class=""
+                :class="[{
+                    [`c-table-col-index_${hIndex}-${head.width}px`]: head.width,
+                }]"
+                :style="style(head)"
             >{{head.label}}</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody class="c-table-tbody">
+          <tr
+              v-for="(body, bIndex) in tableBody" :key="bIndex">
+            <td
+                v-for="(head, hIndex) in tableHeader" :key="head.prop"
+            >{{ body[head.prop] }}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
 </div>
@@ -26,6 +39,9 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import BScroll from 'better-scroll'
+import { createScroll } from "@/utils/isScroll";
+import { createIScroller } from "@/utils/iscrollTable";
 
 export default Vue.extend({
   name: 'c-table',
@@ -33,7 +49,7 @@ export default Vue.extend({
   data() {
     return {
       position: 'bottom',
-      show: true,
+      show: false,
     }
   },
   props: {
@@ -48,8 +64,8 @@ export default Vue.extend({
           {
             prop: 'year',
             label: '年度',
-            width: "100",
-            minWidth: '',
+            width: "",
+            minWidth: '100',
             maxWidth: '',
             align: 'center',
             fixed: '',
@@ -57,8 +73,8 @@ export default Vue.extend({
           {
             prop: 'age',
             label: '年龄',
-            width: "100",
-            minWidth: '',
+            width: "",
+            minWidth: '100',
             maxWidth: '',
             align: 'center',
             fixed: '',
@@ -122,28 +138,84 @@ export default Vue.extend({
             cashValue: '489946',
             testX: '13213',
           },
+          {
+            year: '1',
+            age: '23',
+            dieEnsure: '10000',
+            totalAnnuity: '0',
+            cashValue: '489946',
+            testX: '13213',
+          },
+          {
+            year: '1',
+            age: '23',
+            dieEnsure: '10000',
+            totalAnnuity: '0',
+            cashValue: '489946',
+            testX: '13213',
+          },
+          {
+            year: '1',
+            age: '23',
+            dieEnsure: '10000',
+            totalAnnuity: '0',
+            cashValue: '489946',
+            testX: '13213',
+          },
+          {
+            year: '1',
+            age: '23',
+            dieEnsure: '10000',
+            totalAnnuity: '0',
+            cashValue: '489946',
+            testX: '13213',
+          },
         ]
       }
     },
   },
-  computed: {},
+  computed: {
+  },
   watch: {},
   methods: {
     hide() {
-      console.log(this.show, 'hide')
-      // this.show = false
-      this.$emit('input', false)
-      // this.$refs.popup.close()
     },
-    handleHistory() {
-    }
+    pxToRem(num: [Number, String]) {
+      let root = document.querySelector('html').style.fontSize
+      root = parseInt(root) * 2
+      return parseInt(num) / root + 'rem'
+      console.log(root, 'root')
+    },
+    style(style: Object) {
+      console.log(style, 'style')
+      return {
+        // delete style.width
+        'width': style.width ? `${this.pxToRem(style.width)}` : '',
+        'min-width': style.minWidth ? `${this.pxToRem(style.minWidth)}` : ''
+      }
+    },
+    initScroll() {
+      let scroller = new BScroll('.table-container', {
+        preventDefault: false,
+        // scrollX: true,
+        freeScroll: true,
+        bounce: false,
+      })
+      scroller.on('scroll',()=> {
+        console.log('better scroll is scroll...')
+      })
+    },
+    handleScroll() {
+      // console.log('handleScroll...')
+    },
   },
   created() {
   },
   mounted() {
-    // window.addEventListener('popstate', ()=> {
-    //   alert('popstate')
-    // })
+    // this.initScroll()
+    // createScroll('.c-table')
+    // createIScroller('.table-container')
+    createScroll('.table-container')
   }
 })
 </script>
@@ -153,7 +225,12 @@ export default Vue.extend({
   width: 100%;
   height: 100%;
   background: #fff;
+  padding: 30px;
   .table-container {
+    /*width: 100%;*/
+    position: relative;
+    height: 200px;
+    /*padding: .75rem;*/
     .title-wrap {
       display: flex;
       align-items: center;
@@ -172,10 +249,17 @@ export default Vue.extend({
       }
     }
     .c-table {
-      /*padding: .75rem;*/
-      padding: 30px;
+      /*width: 100%;*/
+      font-size: 22px;
+      color: #333;
+      text-align: center;
+      line-height: 32px;
+      overflow: auto;
       .c-table-thead {
         background: #e5e5e5;
+      }
+      .c-table-tbody {
+        /*height: 100px;*/
       }
     }
   }

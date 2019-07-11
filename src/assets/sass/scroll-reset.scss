@@ -1,0 +1,41 @@
+
+.iScrollHorizontalScrollbar{
+    position: absolute;
+    z-index: 3;
+    height: 7px;
+    left: 2px;
+    right: 8px;
+    bottom: 0px;
+    overflow: hidden;
+    pointer-events: none;
+    .iScrollIndicator{
+        box-sizing: border-box;
+        position: absolute;
+        background: #E5E5E5;
+        border-radius: 4px;
+        height: 4px;
+    }
+}
+
+
+.iScrollVerticalScrollbar{
+    position: absolute;
+    z-index: 3;
+    width: 8px;
+    bottom: 8px;
+    top: 2px;
+    right: 1px;
+    overflow: hidden;
+    pointer-events: none;
+    .iScrollIndicator{
+        position: absolute;
+        width: 4px; height: 0.3rem;
+        border-radius: 4px;
+        box-sizing: border-box;
+        background:  #E5E5E5;
+        display: block;
+    }
+}
+.iScrollIndicator {
+    display: none;
+}
