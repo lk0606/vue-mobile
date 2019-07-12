@@ -6,6 +6,8 @@
     }
 }
 
+//* { touch-action: pan-y; }
+
 .oa {
     overflow: auto;
 }
@@ -25,6 +27,23 @@
 .df {
     display: flex;
 }
+.fdc {
+    flex-direction: column;
+}
 .flex-1 {
     flex: 1;
+}
+.fr-0 {
+    flex-shrink: 0;
+}
+.pos-r {
+    position: relative;
+}
+.pos-a {
+    position: absolute;
+}
+.pos-f {
+    position: fixed;
+    top: 10px;
+    left: 300px;
 }

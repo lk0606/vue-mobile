@@ -607,12 +607,14 @@
     // }
     
     .meal-table2{
-      height: 100%;
+      /*height: 100%;*/
+      /*width: 100%;*/
+      width: 8rem;
+      height: 6rem;
       max-height: 17rem;
       font-size: 0.28rem;
       color: #86939a;
       background-color: #fff;
-      width: 100%;
       -webkit-overflow-scrolling: touch;
       position: relative;
       top: 0;

@@ -2,7 +2,7 @@
 const iScollProbe = require('iscroll/build/iscroll-probe');
 let scroller = null;
 let Selector = "";
-export function createIScroller(selector) {
+export function createScroller(selector) {
   Selector = selector;
   scroller = new iScollProbe(Selector, {
     preventDefault: true,  // 阻止浏览器滑动默认行为
@@ -31,17 +31,18 @@ export function createIScroller(selector) {
   });
 
   function updatePosition() {
-    // 列
-    let frozenCols = document.querySelectorAll(selector + ' table tr td.cols');
-    let frozenRows = document.querySelectorAll(selector + ' table tr td.rows');
-    let frozenCrosses = document.querySelectorAll(selector + ' table tr td.cross');
+    let frozenCols = document.querySelectorAll(selector + ' .table table tr td.cols');
+    let frozenRows = document.querySelectorAll(selector + ' .table table tr td.rows');
+    let frozenCrosses = document.querySelectorAll(selector + ' .table table tr td.cross');
+    // let frozenHeader = document.querySelectorAll(selector + ' table .tr-first td');
     for (let i = 0; i < frozenCols.length; i++) {
       frozenCols[i].style.transform = 'translate(' + -1 * this.x + 'px, 0px) translateZ(0px)';
+      // frozenCols[i].style.transform = 'translate(0px, 0px) translateZ(0px)';
     }
     for (let i = 0; i < frozenRows.length; i++) {
       frozenRows[i].style.transform = 'translate(0px, ' + -1 * this.y + 'px) translateZ(0px)';
+      // frozenRows[i].style.transform = 'translate(' + -1 * this.x + 'px, ' + -1 * this.y + 'px) translateZ(0px)';
     }
-    // 斜角
     for (let i = 0; i < frozenCrosses.length; i++) {
       frozenCrosses[i].style.transform = 'translate(' + -1 * this.x + 'px,' + -1 * this.y + 'px) translateZ(0px)';
     }
@@ -54,7 +55,9 @@ export function createIScroller(selector) {
     //   bodySize = (document.body.offsetWidth * 40 / 750)
     // }
     // let minHeight = 11 + bodySize * 0.5 * 2 + 10
-    if(this.y + document.querySelectorAll(selector)[0].offsetHeight <= 90){
+    // console.log(document.querySelectorAll(selector), 'document.querySelectorAll(selector)')
+    // if(this.y + document.querySelectorAll(selector)[0].offsetHeight <= 90){
+    if(this.y>0){
       this.options.preventDefault = false
      }else if(this.y == 0){
       this.options.preventDefault = false

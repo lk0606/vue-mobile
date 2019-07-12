@@ -1,15 +1,8 @@
 <template>
 <div class='c-table-container'>
   <div class="table-container" @scroll="preventDefault" @touchmove="preventDefault">
-<!--    <bxs-button type="primary" @click="show=true">半浮层</bxs-button>-->
-<!--    <bxs-bottom-sheets-->
-<!--        v-model="show"-->
-<!--        :hideHeader="true"-->
-<!--        title="自定义标题">-->
-<!--      <bxs-button type="primary" @click="show=false">组件内</bxs-button>-->
-<!--    </bxs-bottom-sheets>-->
 
-      <div class="table-header">
+      <div class="table table-header">
         <table class="c-table bx-hairline--surround" cellpadding="0" cellspacing="0">
           <thead
               class="c-table-thead"
@@ -20,6 +13,7 @@
                 class=""
                 :class="[{
                     [`c-table-col-index_${hIndex}-${head.width}px`]: head.width,
+                    [`cols`]: head.prop==='year',
                 }]"
                 :style="style(head)"
             >{{head.label}}</th>
@@ -27,16 +21,20 @@
           </thead>
         </table>
       </div>
-      <div class="table-body">
+      <div class="table table-body">
         <table class="c-table bx-hairline--surround" cellpadding="0" cellspacing="0">
           <tbody class="c-table-tbody">
-          <colgroup>
-            <col v-for="(item, index) in tableHeader" :key="index" :width="item.minWidth">
-          </colgroup>
+<!--          <colgroup>-->
+<!--            <col v-for="(item, index) in tableHeader" :key="index" :width="item.width">-->
+<!--          </colgroup>-->
           <tr
               v-for="(body, bIndex) in tableBody" :key="bIndex">
             <td
                 v-for="(head, hIndex) in tableHeader" :key="head.prop"
+                :class="[{
+                    [`cols`]: head.prop==='year',
+                }]"
+                :style="style(head)"
             >{{ body[head.prop] }}</td>
           </tr>
           </tbody>
@@ -50,7 +48,7 @@
 import Vue from 'vue';
 import BScroll from 'better-scroll'
 // import { createScroll } from "@/utils/isScroll";
-import { createIScroller } from "@/utils/iscrollTable1";
+import { createScroller } from "@/utils/iscrollTable1";
 
 export default Vue.extend({
   name: 'c-table',
@@ -189,6 +187,14 @@ export default Vue.extend({
   methods: {
     preventDefault(e) {
       // console.log(e, 'e')
+      // if(e.type==='scroll' || e.type==='touchmove') {
+      //
+      // }
+      // let dom = document.querySelector('.table-container')
+      // let event = 'scroll' ? 'scroll' : 'touchmove'
+      // dom.addEventListener([event],(e)=> {
+      //   document.preventDefault()
+      // })
     },
     hide() {
     },
@@ -199,7 +205,7 @@ export default Vue.extend({
       console.log(root, 'root')
     },
     style(style: Object) {
-      console.log(style, 'style')
+      // console.log(style, 'style')
       return {
         // delete style.width
         'width': style.width ? `${this.pxToRem(style.width)}` : '',
@@ -224,6 +230,7 @@ export default Vue.extend({
   created() {
   },
   mounted() {
+    createScroller('.table-container')
   }
 })
 </script>
@@ -276,8 +283,10 @@ export default Vue.extend({
   .table-container {
     /*height: 200px;*/
     width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling:touch;
+    /*overflow-x: auto;*/
+    overflow: hidden;
+    /*overflow: auto;*/
+    /*-webkit-overflow-scrolling:touch;*/
 
   }
   .table-header {
@@ -285,6 +294,8 @@ export default Vue.extend({
   .table-body {
     width: 100%;
     height: 150px;
-    overflow-y: auto;
+    /*overflow-y: auto;*/
+    /*overflow: hidden;*/
+    /*overflow: auto;*/
   }
 </style>

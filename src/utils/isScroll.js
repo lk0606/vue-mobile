@@ -1,9 +1,12 @@
 
 const iScollProbe = require('iscroll/build/iscroll-probe')
 
-let scroller
-export function createScroll(selector) {
-  scroller = new iScollProbe(selector, {
+let
+  scroller,
+  outSelector=''
+export function createScroll(_outSelector, fixedSelector) {
+  outSelector = _outSelector
+  scroller = new iScollProbe(outSelector, {
     preventDefault: true,  // 阻止浏览器滑动默认行为
     probeType: 3, //iscroll-probe.js 特有 probeType ： 1 滚动不繁忙的时候触发 probeType ： 2 滚动时每隔一定时间触发 probeType ： 3   每滚动一像素触发一次
     mouseWheel: true, //是否监听鼠标滚轮事件。
@@ -31,7 +34,24 @@ export function createScroll(selector) {
   });
   
   function updatePosition() {
-    
+    let fixed = document.querySelector(outSelector)
+    fixed.style.transform = 'translate(' + 0 + 'px,' + -1 * this.y + 'px) translateZ(0px)';
+    // fixed.style.transform = 'translate(' + -1 * this.x + 'px,' + -1 * this.y + 'px) translateZ(0px)';
+    // for (let i = 0; i < frozenHeader.length; i++) {
+    //   frozenHeader[i].style.transform = 'translate(' + -1 * this.x + 'px,' + -1 * this.y + 'px) translateZ(0px)';
+    //   // frozenCrosses[i].style.transform = 'translate(' + 0 + 'px,' + -1 * this.y + 'px) translateZ(0px)';
+    // }
+    console.log(this.y, 'this.y')
+    let y = document.querySelector(outSelector).scrollTop
+    // console.log(y, 'y')
+    // console.log(this.options, 'this.options')
+    if(this.y + document.querySelectorAll(outSelector)[0].offsetHeight <= 90){
+      this.options.preventDefault = false
+    }else if(this.y == 0){
+      this.options.preventDefault = false
+    }else{
+      this.options.preventDefault = true
+    }
   }
   
   return scroller
