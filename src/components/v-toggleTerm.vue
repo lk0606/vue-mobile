@@ -113,7 +113,7 @@
                 <tr class="tr-first">
                   <td class="rows cross" v-if="itemData.data.length>1"><span class="top" :style="[{width:4 +'rem'}]">险种</span></td>
                   <td :class="['rows','cross',{'no-mtitle':itemData.data.length<=1}]"><span class="top top2">交费年期/推广费</span></td>
-                  <td v-for='(item,index) in longBoList' :class="['rows',{'fcols':index==0}]"><span class="top">{{item.supportedYear ? `第${item.supportedYear}年` : '推广费'}}</span></td>
+                  <td v-for='(item,index) in 2' :class="['rows',{'fcols':index==0}]"><span class="top">{{`第${item}年`}}</span></td>
                 </tr>
                 <template v-for='(item,findex) in itemData.data'>
                   <tr v-for='(item2,index) in item.productBonusPolicyBoList'>
@@ -241,6 +241,7 @@
                       setTimeout(function(){
                         this.scroll.scroller = createIScroller(".meal-table2");
                       },100)
+
                     }
                 }
             },

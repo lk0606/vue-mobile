@@ -105,5 +105,29 @@ export const table = {
       cashValue: '489946',
       testX: '13213',
     },
+    {
+      year: '1',
+      age: '23',
+      dieEnsure: '10000',
+      totalAnnuity: '0',
+      cashValue: '489946',
+      testX: '13213',
+    },
+    {
+      year: '1',
+      age: '23',
+      dieEnsure: '10000',
+      totalAnnuity: '0',
+      cashValue: '489946',
+      testX: '13213',
+    },
+    {
+      year: '1',
+      age: '23',
+      dieEnsure: '10000',
+      totalAnnuity: '0',
+      cashValue: '489946',
+      testX: '13213',
+    },
   ]
 }

@@ -1,13 +1,13 @@
 <template>
 <div class='c-table-container'>
   <div class="table-container" @scroll="preventDefault" @touchmove="preventDefault">
-<!--    <bxs-button type="primary" @click="show=true">半浮层</bxs-button>-->
-<!--    <bxs-bottom-sheets-->
-<!--        v-model="show"-->
-<!--        :hideHeader="true"-->
-<!--        title="自定义标题">-->
-<!--      <bxs-button type="primary" @click="show=false">组件内</bxs-button>-->
-<!--    </bxs-bottom-sheets>-->
+    <bxs-button type="primary" @click="show=true">半浮层</bxs-button>
+    <bxs-bottom-sheets
+        v-model="show"
+        :hideHeader="true"
+        title="自定义标题">
+      <bxs-button type="primary" @click="show=false">组件内</bxs-button>
+    </bxs-bottom-sheets>
 
       <div class="table-header">
         <table class="c-table bx-hairline--surround" cellpadding="0" cellspacing="0">
@@ -195,11 +195,11 @@ export default Vue.extend({
     pxToRem(num: [Number, String]) {
       let root = document.querySelector('html').style.fontSize
       root = parseInt(root) * 2
+      console.log(root, 'root size')
       return parseInt(num) / root + 'rem'
-      console.log(root, 'root')
     },
     style(style: Object) {
-      console.log(style, 'style')
+      // console.log(style, 'style')
       return {
         // delete style.width
         'width': style.width ? `${this.pxToRem(style.width)}` : '',

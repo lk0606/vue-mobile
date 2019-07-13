@@ -24,6 +24,11 @@ export default new Router({
       path: '/tt',
       name: 't',
       component: () => import('./views/test/t.vue')
+    },
+    {
+      path: '/iscroll-table-test',
+      name: 'iscroll-table-test',
+      component: () => import('./views/test/iscroll-table.vue')
     }
   ]
 })

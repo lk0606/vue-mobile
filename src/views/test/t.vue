@@ -1,5 +1,6 @@
 <template>
 <div class='c-table-container'>
+  <h1 style="margin-bottom: 30px;">原生滚动  头部固定：</h1>
   <div class="table-container" @scroll="preventDefault" @touchmove="preventDefault">
 
       <div class="table table-header">
@@ -47,8 +48,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import BScroll from 'better-scroll'
-// import { createScroll } from "@/utils/isScroll";
-import { createScroller } from "@/utils/iscrollTable1";
+import { createIScroller } from "@/utils/iscrollTable1";
 
 export default Vue.extend({
   name: 'c-table',
@@ -230,7 +230,6 @@ export default Vue.extend({
   created() {
   },
   mounted() {
-    createScroller('.table-container')
   }
 })
 </script>
@@ -283,10 +282,8 @@ export default Vue.extend({
   .table-container {
     /*height: 200px;*/
     width: 100%;
-    /*overflow-x: auto;*/
-    overflow: hidden;
-    /*overflow: auto;*/
-    /*-webkit-overflow-scrolling:touch;*/
+    overflow-x: auto;
+    -webkit-overflow-scrolling:touch;
 
   }
   .table-header {
@@ -294,8 +291,6 @@ export default Vue.extend({
   .table-body {
     width: 100%;
     height: 150px;
-    /*overflow-y: auto;*/
-    /*overflow: hidden;*/
-    /*overflow: auto;*/
+    overflow-y: auto;
   }
 </style>
