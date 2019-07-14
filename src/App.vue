@@ -31,6 +31,7 @@
     },
     mounted() {
       this.initSize()
+      window.addEventListener('resize', this.initSize())
     }
   })
 </script>
