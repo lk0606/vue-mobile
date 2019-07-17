@@ -26,7 +26,7 @@
             :style="{
                 borderTopLeftRadius: barRadius,
                 borderBottomLeftRadius: barRadius,
-                backgroundColor: activeBg,
+                backgroundColor: disabled ? disabledBg : activeBg,
                 width: `calc(${progress}% + ${btnSize} / 2`,
                 height: barLen,
                 top: `calc(${btnSize} / 2 - ${barLen} / 2)`,
@@ -36,7 +36,7 @@
             ref="thumb"
             class="range-thumb"
             :style="{
-                backgroundColor: btnColor,
+                backgroundColor: disabled ? disabledBg : btnColor,
                 width: btnSize,
                 height: btnSize,
                 left: `${progress}%`
@@ -73,6 +73,10 @@ export default {
     disabled: {
       type: Boolean,
       default: false
+    },
+    disabledBg: {
+      type: String,
+      default: '#d64a0a'
     },
     value: {
       type: Number,
@@ -126,7 +130,6 @@ export default {
     const getThumbPosition = () => {
       const contentBox = content.getBoundingClientRect();
       const thumbBox = thumb.getBoundingClientRect();
-      console.log(contentBox, thumbBox, 'getThumbPosition')
       return {
         left: thumbBox.left - contentBox.left,
         top: thumbBox.top - contentBox.top,
@@ -206,5 +209,8 @@ export default {
         }
       }
     }
+  }
+  .range-vertical {
+    transform: rotate(90deg) translateY(90px);
   }
 </style>

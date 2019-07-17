@@ -1,6 +1,6 @@
 <template>
   <div class="range-test-container">
-    <cRange v-model="value">
+    <cRange v-model="value" :disabled="false">
 <!--      <div slot="start"-->
 <!--           style="width: 3rem; height: 3rem;background: red;"-->
 <!--           @click="value>0?value&#45;&#45;:0">-->

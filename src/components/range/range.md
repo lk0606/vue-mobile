@@ -32,7 +32,8 @@ export default {
 | min | Number(default: 0)  | 最小值 |
 | max | Number(default: 0)  | 最大值 |
 | step | Number(default: 0)  | 步长 |
-| disabled | Boolean(default: false)  | 是否禁用状态（待开发） |
+| disabled | Boolean(default: false)  | 是否禁用状态 |
+| disabledBg | String(default: #d64a0a)  | 禁用状态下的颜色（包括激活背景和控制按钮） |
 | barLen | String(default: 12px)  | range宽度 |
 | barRadius | String(default: 6px)  | range radius |
 | btnSize | String(default: 30px)  | 控制按钮大小 |
