@@ -35,6 +35,26 @@ export default Vue.extend({
             url: '/test',
             rightText: '可固定'
           },
+          {
+            title: '职业',
+            url: '/profession',
+            rightText: ''
+          },
+          {
+            title: 'popup',
+            url: '/popup',
+            rightText: 'popup测试'
+          },
+          {
+            title: 'range开发',
+            url: '/range-dev',
+            rightText: 'range开发'
+          },
+          {
+            title: 'range调用',
+            url: '/range-test',
+            rightText: 'range调用'
+          },
         ]
       }
   },

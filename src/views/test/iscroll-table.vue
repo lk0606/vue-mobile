@@ -1,20 +1,21 @@
 <template>
 <div class='c-table-container'>
   <h1 style="margin-bottom: 30px;">iScroll translate   一切皆可固定：</h1>
-  <div class="table-container" >
-      <table class="c-table bx-hairline--surround" cellpadding="0" cellspacing="0">
+  <div class="table-container bx-hairline--surround m1">
+      <table class="c-table" cellpadding="0" cellspacing="0" border="0">
           <thead
+              v-if="showHeader"
               class="c-table-thead"
           >
-            <tr >
+            <tr>
               <td
                   v-for="(head, hIndex) in tableHeader" :key="head.prop"
-                  class="rows"
+                  class="rows bx-hairline--bottom bx-hairline--right"
                   :class="[{
                       [`c-table-col-index_${hIndex}-${head.width}px`]: head.width,
                       [`cross`]: ['year', 'age'].includes(head.prop),
                   }]"
-                  :style="style(head)"
+                  :style="{...style(head), ...headCellStyle}"
               >{{head.label}}</td>
             </tr>
           </thead>
@@ -22,9 +23,11 @@
             <tr
                 v-for="(body, bIndex) in tableBody" :key="bIndex">
               <td
+                  class="bx-hairline--bottom bx-hairline--right"
                   v-for="(head, hIndex) in tableHeader" :key="head.prop"
                   :class="[{
-                      [`cols`]: ['year', 'age'].includes(head.prop)
+                      [`cols`]: ['year', 'age'].includes(head.prop),
+                      [`table-row-stripe`]: stripe && bIndex % 2 !==0
                   }]"
                   :style="style(head)"
               >{{ body[head.prop] }}</td>
@@ -37,7 +40,6 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import BScroll from 'better-scroll'
 import { createIScroller } from "@/utils/iscrollTable1";
 import { table } from '../../../public/data/t'
 
@@ -56,6 +58,10 @@ export default Vue.extend({
       type: [String, Boolean],
       default: '表格标题'
     },
+    showHeader: {
+      type: Boolean,
+      default: true
+    },
     tableHeader: {
       type: Array,
       default() {
@@ -68,6 +74,20 @@ export default Vue.extend({
         return table.tableBody
       }
     },
+    headCellStyle: {
+      type: Object,
+      default() {
+        return {
+          background: '#f2f2f2',
+          color: '#333',
+          fontWeight: 'bold',
+        }
+      }
+    },
+    stripe: {
+      type: Boolean,
+      default: true
+    }
   },
   computed: {
   },
@@ -85,17 +105,6 @@ export default Vue.extend({
         'min-width': style.minWidth ? `${this.pxToRem(style.minWidth)}` : ''
       }
     },
-    // initScroll() {
-    //   let scroller = new BScroll('.table-container', {
-    //     preventDefault: false,
-    //     // scrollX: true,
-    //     freeScroll: true,
-    //     bounce: false,
-    //   })
-    //   scroller.on('scroll',()=> {
-    //     console.log('better scroll is scroll...')
-    //   })
-    // },
     t() {
         createIScroller('.table-container')
     },
@@ -112,7 +121,7 @@ export default Vue.extend({
   created() {
   },
   mounted() {
-    this.t()
+    this.origin()
     this.preventDefault()
   }
 })
@@ -127,14 +136,23 @@ export default Vue.extend({
   padding: 30px;
   .table-container {
     touch-action: pan-y;
+    -webkit-overflow-scrolling:touch;
     width: 8rem;
     height: 6rem;
     overflow: hidden;
     position: relative;
-    .title-wrap {
-      display: flex;
-      align-items: center;
-      padding: 28px 30px;
+    table {
+      tr {
+        height: 60px;
+        td:last-of-type {
+          border-right: 0;
+        }
+      }
+      tr:last-of-type {
+        td {
+          border-bottom: 0;
+        }
+      }
     }
     .c-table {
       width: 100%;
@@ -143,22 +161,13 @@ export default Vue.extend({
       text-align: center;
       line-height: 32px;
       .c-table-thead {
-        background: #e5e5e5;
-        /*overflow: hidden;*/
       }
       .c-table-tbody {
-        /*overflow: hidden;*/
+        color: #666;
       }
     }
   }
 }
-  .table-container {
-    width: 8rem;
-    height: 6rem;
-    overflow: hidden;
-    -webkit-overflow-scrolling:touch;
-
-  }
 .rows {
   background: #fff;
   position: relative;
@@ -172,5 +181,11 @@ export default Vue.extend({
 .cross {
   position: relative;
   z-index: 5;
+}
+.m1 {
+  margin: 1px;
+}
+.table-row-stripe {
+  background: #f8f8f8;
 }
 </style>

@@ -21,14 +21,34 @@ export default new Router({
       component: () => import('./views/test/test.vue')
     },
     {
-      path: '/tt',
-      name: 't',
-      component: () => import('./views/test/t.vue')
+      path: '/origin-table',
+      name: 'origin-table',
+      component: () => import('./views/test/origin-table.vue')
     },
     {
       path: '/iscroll-table-test',
       name: 'iscroll-table-test',
       component: () => import('./views/test/iscroll-table.vue')
+    },
+    {
+      path: '/profession',
+      name: 'profession',
+      component: () => import('./views/test/profession.vue')
+    },
+    {
+      path: '/popup',
+      name: 'popup',
+      component: () => import('./views/test/popup.vue')
+    },
+    {
+      path: '/range-dev',
+      name: 'range-dev',
+      component: () => import('./components/range/c-range.vue')
+    },
+    {
+      path: '/range-test',
+      name: 'range-test',
+      component: () => import('./components/range/range-demo.vue')
     }
   ]
 })
