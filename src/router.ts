@@ -46,9 +46,14 @@ export default new Router({
       component: () => import('./components/range/c-range.vue')
     },
     {
-      path: '/range-test',
-      name: 'range-test',
+      path: '/range-demo',
+      name: 'range-demo',
       component: () => import('./components/range/range-demo.vue')
+    },
+    {
+      path: '/table-demo',
+      name: 'table-demo',
+      component: () => import('./components/table/table-demo.vue')
     }
   ]
 })

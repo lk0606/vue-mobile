@@ -22,7 +22,7 @@ export default Vue.extend({
         cell: [
           {
             title: '原生滚动',
-            url: '/tt',
+            url: '/origin-table',
             rightText: '头部固定'
           },
           {
@@ -52,8 +52,13 @@ export default Vue.extend({
           },
           {
             title: 'range调用',
-            url: '/range-test',
+            url: '/range-demo',
             rightText: 'range调用'
+          },
+          {
+            title: 'table调用',
+            url: '/table-demo',
+            rightText: 'table调用'
           },
         ]
       }
