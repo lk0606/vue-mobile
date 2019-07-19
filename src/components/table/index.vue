@@ -1,6 +1,6 @@
 <template>
 <div class='c-table-container'>
-  <div class="table-container bx-hairline--surround m1">
+  <div class="table-container border-surround m1">
       <table class="c-table" cellpadding="0" cellspacing="0" border="0">
           <thead
               v-if="showHeader"
@@ -10,7 +10,7 @@
             <tr>
               <td
                   v-for="(head, hIndex) in tableHeader" :key="head.prop"
-                  class="rows border-bottom-1 border-right-1"
+                  class="rows border-bottom border-right"
                   :class="[{
                       [`cross`]: head.fixed,
                   }]"
@@ -32,7 +32,7 @@
             <tr
                 v-for="(body, bIndex) in tableBody" :key="bIndex">
               <td
-                  class=" border-bottom-1 border-right-1"
+                  class=" border-bottom border-right"
                   v-for="(head, hIndex) in tableHeader" :key="head.prop"
                   :class="[{
                       [`table-row-stripe`]: stripe && bIndex % 2 !==0,
@@ -166,14 +166,16 @@ export default {
           td:last-of-type {
             &::before {
               border-right-width: 0;
+              display: none;
             }
           }
         }
         tbody {
           tr:last-of-type {
             td {
-              &::before {
+              &::after {
                 border-bottom-width: 0;
+                display: none;
               }
             }
           }
@@ -212,6 +214,9 @@ export default {
   /*}*/
   .m1 {
     margin: 1PX;
+  }
+  .p1 {
+    padding: 1PX;
   }
   .ml-6 {
     margin-left: 0.15rem;

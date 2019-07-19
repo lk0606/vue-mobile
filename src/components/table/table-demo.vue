@@ -1,5 +1,5 @@
 <template>
-  <div class="table-demo-container border-surround-1 border-top-1">
+  <div class="table-demo-container">
     <cTable></cTable>
   </div>
 </template>
