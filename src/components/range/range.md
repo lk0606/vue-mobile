@@ -4,21 +4,26 @@
 ## Usage
 ```vue
 <template>
-    <cRange v-model="value">
-          <div slot="start"
-               @click="value>0?value--:0">-</div>
-          <div
-              @click="value<100?value++:100" slot="end">+</div>
-    </cRange>
+    <div>
+        <cRange v-model="value">
+            <div slot="start"
+                 @click="value>0?value--:0">-</div>
+            <div
+                @click="value<100?value++:100" slot="end">+</div>
+        </cRange>
+    </div>
 </template>
 <script>
-import range from 'range'
+import cRange from 'range'
 
 export default {
   data() {
       return {
         value: 5
       }
+  },
+  components: {
+    cRange
   }
 }
 </script>

@@ -1,0 +1,48 @@
+
+:root {
+    --hairline: {
+        content: ' ';
+        position: absolute;
+        pointer-events: none;
+        box-sizing: border-box;
+        top: -50%;
+        left: -50%;
+        right: -50%;
+        bottom: -50%;
+        transform: scale(0.5);
+        border: 0 solid red;
+    }
+}
+
+
+[class*='border-'] {
+    position: relative;
+
+    &::after {
+        @apply --hairline;
+    }
+}
+
+.border-top::after {
+    border-top-width: 1px;
+}
+
+.border-left::after {
+    border-left-width: 1px;
+}
+
+.border-right::after {
+    border-right-width: 1px;
+}
+
+.border-bottom::after {
+    border-bottom-width: 1px;
+}
+
+.border-top-bottom::after {
+    border-width: 1px 0;
+}
+
+.border-surround::after {
+    border-width: 1px;
+}

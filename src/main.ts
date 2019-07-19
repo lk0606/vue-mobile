@@ -12,6 +12,8 @@ import '@/assets/sass/table.scss'
 import '@/assets/sass/public.scss'
 import '@/assets/sass/scroll-reset.scss'
 import '@/assets/sass/line.scss'
+import '@/assets/sass/test.scss'
+// import '@/assets/sass/border.pcss'
 // import 'lib-flexible'
 
 // import '@/assets/sass/responsive.scss'

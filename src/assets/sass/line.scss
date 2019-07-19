@@ -20,79 +20,102 @@
         transform: scaleY(.33);
     }
 }
-
-/* === 1px四周边框 =/==*/
-//@mixin border-1px ( $color:#e5e5e5, $border-radius: 0.08rem){
-//    position: relative;
-//    &::after{
-//        content: " ";
-//        position: absolute;
-//        left: 0;
-//        top: 0;
-//        width: 100%;
-//        height: 100%;
-//        border: 1px solid $color;
-//        color: $color;
-//        //-webkit-transform-origin:left top;
-//        transform-origin: left top;
-//        border-radius: $border-radius;
-//
-//        @media screen and (-webkit-min-device-pixel-ratio: 2) {
-//            width: calc(200% + 2px);
-//            height: 200%;
-//            -webkit-transform-origin: 0 0;
-//            transform-origin: 0 0;
-//            -webkit-transform: scale(.5);
-//            transform: scale(.5);
-//            border-radius: calc(#{$border-radius} * 2);
-//        }
-//        @media screen and (-webkit-min-device-pixel-ratio: 3) {
-//            width: calc(300% + 3px);
-//            height: 300%;
-//            -webkit-transform-origin: 0 0;
-//            transform-origin: 0 0;
-//            -webkit-transform: scale(.33);
-//            transform: scale(.33);
-//            border-radius: calc(#{$border-radius} * 3);
-//        }
-//    }
-//}
-
 $direction: surround;
 $border-style: solid;
 $border-color: #e5e5e5;
 /* === 1px边框 =/==*/
 @mixin border-1($direction: surround, $border-color: red, $border-style: solid){
     position: relative;
-    &::after{
+    &::before{
         content: '';
         width: 100%;
         height: 100%;
+        box-sizing: border-box;
         pointer-events: none;
         position: absolute;
-        top: 0;
-        left: 0;
+        //overflow: hidden;
         @if $direction == surround {
-            border: 1PX $border-style $border-color;
-        } @else {
-            border-#{$direction}: 1PX $border-style $border-color;
-        }
-        @media screen and (-webkit-min-device-pixel-ratio: 2) {
+            left: 0;
+            top: 0;
             -webkit-transform-origin: 0 0;
             transform-origin: 0 0;
-            @if $direction == top or $direction == bottom {
-                height: 200%;
-                -webkit-transform: scaleY(.5);
-                transform: scaleY(.5);
-            } @else if $direction == left or $direction == right {
-                width: 200%;
-                -webkit-transform: scaleX(.5);
-                transform: scaleX(.5);
-            } @else if $direction == surround {
+            border: 1PX $border-style $border-color;
+        }
+        @else {
+            border: 0 $border-style $border-color;
+            border-#{$direction}-width: 1PX !important;
+        }
+        //@else if $direction == left{
+        //    left: 0;
+        //    top: 0;
+        //    -webkit-transform-origin: left top;
+        //    transform-origin: left top;
+        //    border: 0 $border-style $border-color;
+        //    border-#{$direction}-width: 1PX !important;
+        //} @else if $direction == right{
+        //    right: 0;
+        //    top: 0;
+        //    -webkit-transform-origin: right top;
+        //    transform-origin: right top;
+        //    border: 0 $border-style $border-color;
+        //    border-#{$direction}-width: 1PX !important;
+        //} @else if $direction == top{
+        //    left: 0;
+        //    top: 0;
+        //    -webkit-transform-origin: left top;
+        //    transform-origin: left top;
+        //    border: 0 $border-style $border-color;
+        //    border-#{$direction}-width: 1PX !important;
+        //} @else if $direction == bottom{
+        //    left: 0;
+        //    bottom: 0;
+        //    -webkit-transform-origin: left bottom;
+        //    transform-origin: left bottom;
+        //    border: 0 $border-style $border-color;
+        //    border-#{$direction}-width: 1PX !important;
+        //}
+        @media screen and (-webkit-min-device-pixel-ratio: 2) {
+            @if $direction == surround {
+                left: 0;
+                top: 0;
+                -webkit-transform-origin: 0 0;
+                transform-origin: 0 0;
                 width: 200%;
                 height: 200%;
                 -webkit-transform: scale(.5);
                 transform: scale(.5);
+            } @else if $direction == left{
+                left: 0;
+                top: 0;
+                -webkit-transform-origin: left top;
+                transform-origin: left top;
+                width: 200%;
+                -webkit-transform: scaleX(.5);
+                transform: scaleX(.5);
+            } @else if $direction == right{
+                left: 0;
+                top: 0;
+                //-webkit-transform-origin: 0 0;
+                transform-origin: left top;
+                width: 200%;
+                -webkit-transform: scaleX(.5);
+                transform: scaleX(.5);
+            } @else if $direction == top{
+                left: 0;
+                top: 0;
+                -webkit-transform-origin: left top;
+                transform-origin: left top;
+                height: 200%;
+                -webkit-transform: scaleY(.5);
+                transform: scaleY(.5);
+            } @else if $direction == bottom{
+                left: 0;
+                top: 0;
+                //-webkit-transform-origin: 0 0;
+                transform-origin: left top;
+                height: 200%;
+                -webkit-transform: scaleY(.5);
+                transform: scaleY(.5);
             }
         }
         @media screen and (-webkit-min-device-pixel-ratio: 3) {
@@ -130,4 +153,61 @@ $border-color: #e5e5e5;
 }
 .border-right-1 {
     @include border-1(right);
+}
+
+@mixin border($direction: surround, $border-color: red, $border-style: solid) {
+    position: relative;
+    &::before {
+        content: '';
+        pointer-events: none;
+        position: absolute;
+        @if $direction == surround {
+            border: 1PX $border-style $border-color;
+        } @else if $direction == left{
+            width: 1PX;
+            height: 100%;
+        }
+    }
+}
+
+.thin-border-right {
+    position: relative;
+    &::before {
+        overflow: hidden;
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        /*border-right: 1PX solid #e5e5e5;*/
+        width: 1PX;
+        pointer-events: none;
+        height: 100%;
+        background: red;
+        @media screen and (-webkit-min-device-pixel-ratio: 2) {
+            width: 1PX;
+            -webkit-transform-origin: top right;
+            transform-origin: top right;
+            -webkit-transform: scaleX(0.5);
+            transform: scaleX(0.5);
+        }
+    }
+}
+.thin-border-bottom{
+    position: relative;
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1PX;
+        background-color: red;
+        @media screen and (-webkit-min-device-pixel-ratio: 2) {
+            height: 1PX;
+            -webkit-transform-origin: left bottom;
+            transform-origin: left bottom;
+            -webkit-transform: scaleY(.5);
+            transform: scaleY(.5);
+        }
+    }
 }

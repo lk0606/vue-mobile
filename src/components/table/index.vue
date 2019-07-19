@@ -6,6 +6,7 @@
               v-if="showHeader"
               class="c-table-thead"
           >
+<!--          thin-border-right thin-border-bottom-->
             <tr>
               <td
                   v-for="(head, hIndex) in tableHeader" :key="head.prop"
@@ -31,7 +32,7 @@
             <tr
                 v-for="(body, bIndex) in tableBody" :key="bIndex">
               <td
-                  class="border-bottom-1 border-right-1"
+                  class=" border-bottom-1 border-right-1"
                   v-for="(head, hIndex) in tableHeader" :key="head.prop"
                   :class="[{
                       [`table-row-stripe`]: stripe && bIndex % 2 !==0,
@@ -163,7 +164,7 @@ export default {
         tr {
           height: 1.5rem;
           td:last-of-type {
-            &:after {
+            &::before {
               border-right-width: 0;
             }
           }
@@ -171,7 +172,7 @@ export default {
         tbody {
           tr:last-of-type {
             td {
-              &:after {
+              &::before {
                 border-bottom-width: 0;
               }
             }
@@ -206,8 +207,11 @@ export default {
     position: relative;
     z-index: 5;
   }
+  /*.m1 {*/
+  /*  margin: 0.025rem;*/
+  /*}*/
   .m1 {
-    margin: 0.025rem;
+    margin: 1PX;
   }
   .ml-6 {
     margin-left: 0.15rem;

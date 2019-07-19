@@ -1,24 +1,81 @@
 # table 
-> A component which used iScroll-probe
+> A component which used iScroll-probe for mobile
 
 ## Usage
 ```vue
 <template>
-    <cRange v-model="value">
-          <div slot="start"
-               @click="value>0?value--:0">-</div>
-          <div
-              @click="value<100?value++:100" slot="end">+</div>
-    </cRange>
+    <div class="table-demo-container">
+        <cTable
+        ></cTable>
+    </div>
 </template>
 <script>
-import range from 'range'
+import cTable from 'table'
 
 export default {
   data() {
-      return {
-        value: 5
-      }
+    return {
+      tableHeader: [
+          {
+            prop: 'year',
+            label: '年度',
+            width: "",
+            minWidth: '100',
+            maxWidth: '',
+            align: 'center',
+            fixed: true,
+          },
+          {
+            prop: 'age',
+            label: '年龄',
+            width: "",
+            minWidth: '100',
+            maxWidth: '',
+            align: 'center',
+            fixed: true,
+          },
+          {
+            prop: 'dieEnsure',
+            label: '身故保障',
+            width: "",
+            minWidth: '180',
+            maxWidth: '',
+            align: 'center',
+            fixed: '',
+          },
+          {
+            prop: 'totalAnnuity',
+            label: '累计年金',
+            width: "",
+            minWidth: '180',
+            maxWidth: '',
+            align: 'center',
+            fixed: '',
+            icon: 'help',
+          },
+          {
+            prop: 'cashValue',
+            label: '现金价值',
+            width: "",
+            minWidth: '180',
+            maxWidth: '',
+            align: 'center',
+            fixed: '',
+          },
+          {
+            prop: 'testX',
+            label: '测试横向滚动',
+            width: "",
+            minWidth: '180',
+            maxWidth: '',
+            align: 'center',
+            fixed: '',
+          },
+        ], 
+    }
+  },
+  components: {
+    cTable
   }
 }
 </script>
@@ -28,16 +85,14 @@ export default {
 
 | Option | type | description |
 | ----- | ----- | ----- |
-| value | Number(default: 0)  | 绑定值（必填），使用v-model绑定 |
-| min | Number(default: 0)  | 最小值 |
-| max | Number(default: 0)  | 最大值 |
-| step | Number(default: 0)  | 步长 |
-| disabled | Boolean(default: false)  | 是否禁用状态 |
-| disabledBg | String(default: #d64a0a)  | 禁用状态下的颜色（包括激活背景和控制按钮） |
-| barLen | String(default: 12px)  | range宽度 |
-| barRadius | String(default: 6px)  | range radius |
-| btnSize | String(default: 30px)  | 控制按钮大小 |
-| btnColor | String(default: #FF5000)  | 控制按钮颜色 |
-| vertical | Boolean(default: false)  | 是否垂直显示（待开发） |
-| defaultBg | String(default: #e5e5e5)  | 未激活背景 |
-| activeBg | String(default: #e5e5e5)  | 激活背景色 |
+| rootSize | Number(default: 40)  | 根据html fontSize算出rem |
+| showHeader | Boolean(default: true)  | 是否显示header |
+| headCellStyle | Object(default: {background: '#f2f2f2',color: '#333',fontWeight: 'bold'})  | 头部样式 |
+| stripe | Boolean(default: true)  | 是否斑马背景 #f8f8f8 |
+| tableHeader | Array( [{}] )  | tableHeader 详解如下，和element方式相同 |
+| prop | String  | tableHeader 配置属性，后期数据根据这个循环，甚至一些事件名，必须保持唯一 |
+| width/minWidth | String/Number  | 同样式属性，必须合法 |
+| align | String  | 对齐样式 |
+| fixed | Boolean  | 是否固定本行 |
+| icon | String  | 表头icon（基于bxs组件），会emit(head.prop)事件 |
+| tableBody | Array(default: 0)  | tableBody，与element-ui传值相同 |
