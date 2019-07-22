@@ -1,6 +1,7 @@
 <template>
   <div class="table-demo-container">
-    <cTable></cTable>
+    <cTable :stripe="false"
+            class="c-table"></cTable>
   </div>
 </template>
 
@@ -26,5 +27,12 @@
 
 <style lang="scss" scoped>
   .table-demo-container {
+  }
+</style>
+<style lang="scss">
+  .c-table {
+    .table-row-odd {
+      background: red;
+    }
   }
 </style>

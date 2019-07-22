@@ -6,17 +6,19 @@
               v-if="showHeader"
               class="c-table-thead"
           >
-<!--          thin-border-right thin-border-bottom-->
             <tr>
               <td
                   v-for="(head, hIndex) in tableHeader" :key="head.prop"
-                  class="rows border-bottom border-right"
+                  class="border-bottom border-right"
                   :class="[{
+                      [`rows`]: fixedHeader,
                       [`cross`]: head.fixed,
                   }]"
                   :style="style(head, 'head')"
               >
-                <div class="head-cell-center">
+                <div
+                    :class="head.align ? `cell-align-${head.align}` : `center`"
+                >
                   <span>{{head.label}}</span>
                   <bxs-icon
                       class="ml-6"
@@ -30,17 +32,26 @@
           </thead>
           <tbody class="c-table-tbody">
             <tr
-                v-for="(body, bIndex) in tableBody" :key="bIndex">
+                v-for="(body, bIndex) in tableBody" :key="bIndex"
+                :class="{
+                }"
+            >
               <td
                   class=" border-bottom border-right"
                   v-for="(head, hIndex) in tableHeader" :key="head.prop"
                   :class="[{
-                      [`table-row-stripe`]: stripe && bIndex % 2 !==0,
                       [`cols`]: head.fixed,
+                      [`table-row-odd`]: !stripe && bIndex % 2 !==0,
+                      [`table-row-even`]: !stripe && bIndex % 2 ===0
                   }]"
-                  :style="style(head)"
+                  :style="{
+                      ...style(head),
+                      backgroundColor: stripe && bIndex % 2 !==0 ? stripeColor : ''
+                  }"
               >
-                <div>
+                <div
+                    :class="head.align ? `cell-align-${head.align}` : `center`"
+                >
                   <span>{{ body[head.prop] }}</span>
                 </div>
               </td>
@@ -71,6 +82,10 @@ export default {
       type: Boolean,
       default: true
     },
+    fixedHeader: {
+      type: Boolean,
+      default: true
+    },
     tableHeader: {
       type: Array,
       default() {
@@ -96,6 +111,10 @@ export default {
     stripe: {
       type: Boolean,
       default: true
+    },
+    stripeColor: {
+      type: String,
+      default: '#f8f8f8'
     }
   },
   computed: {
@@ -156,8 +175,8 @@ export default {
     .table-container {
       touch-action: pan-y;
       -webkit-overflow-scrolling:touch;
-      /*width: 8rem;*/
-      /*height: 6rem;*/
+      width: 10rem;
+      height: 6rem;
       overflow: hidden;
       position: relative;
       table {
@@ -266,9 +285,19 @@ export default {
   .iScrollIndicator {
     display: none;
   }
-  .head-cell-center {
+  .cell-align-center {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .cell-align-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .cell-align-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 </style>
