@@ -9,10 +9,11 @@
             <tr>
               <td
                   v-for="(head, hIndex) in tableHeader" :key="head.prop"
-                  class="border-bottom border-right"
                   :class="[{
                       [`rows`]: fixedHeader,
                       [`cross`]: head.fixed,
+                      [`border-bottom border-right`]: border,
+                      [`border-bottom-${borderColor} border-right-{borderColor}`]: border && borderColor,
                   }]"
                   :style="style(head, 'head')"
               >
@@ -37,16 +38,17 @@
                 }"
             >
               <td
-                  class=" border-bottom border-right"
                   v-for="(head, hIndex) in tableHeader" :key="head.prop"
                   :class="[{
                       [`cols`]: head.fixed,
                       [`table-row-odd`]: !stripe && bIndex % 2 !==0,
-                      [`table-row-even`]: !stripe && bIndex % 2 ===0
+                      [`table-row-even`]: !stripe && bIndex % 2 ===0,
+                      [`border-bottom border-right`]: border,
+                      [`border-bottom-${borderColor} border-right-{borderColor}`]: border && borderColor,
                   }]"
                   :style="{
                       ...style(head),
-                      backgroundColor: stripe && bIndex % 2 !==0 ? stripeColor : ''
+                      backgroundColor: stripe && bIndex % 2 !==0 ? stripeColor : '',
                   }"
               >
                 <div
@@ -115,6 +117,14 @@ export default {
     stripeColor: {
       type: String,
       default: '#f8f8f8'
+    },
+    border: {
+      type: Boolean,
+      default: true
+    },
+    borderColor: {
+      type: String,
+      default: '#e5e5e5'
     }
   },
   computed: {
@@ -128,7 +138,7 @@ export default {
       if(typeof size === 'number') {
         return parseFloat(size) / this.rootSize + 'rem';
       } else if(typeof size === 'string') {
-        // /(^[0-9]+\.?|^0+\.|^\.)[0-9]*px$/i
+        // /(^[0-9]*\.?|^0+\.|^\.)[0-9]+px$/i
         // 包含px 不分 大小写
         if(/[px]$/i.test(size)){
           const unit = size.substr(-2)

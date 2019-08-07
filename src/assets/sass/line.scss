@@ -1,6 +1,10 @@
 $direction: surround;
 $border-style: solid;
 $border-color: #e5e5e5;
+/**
+    left right  ::before
+    top bottom  ::after
+ */
 @mixin border-thin($direction: surround, $border-color: red, $border-style: solid) {
     position: relative;
     @if($direction == surround) {

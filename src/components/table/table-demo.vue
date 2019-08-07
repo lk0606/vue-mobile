@@ -1,7 +1,7 @@
 <template>
   <div class="table-demo-container">
-    <cTable :stripe="false"
-            class="c-table"></cTable>
+    <cTable
+        class="c-table"></cTable>
   </div>
 </template>
 
