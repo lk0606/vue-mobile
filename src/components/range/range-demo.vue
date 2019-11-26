@@ -1,5 +1,5 @@
 <template>
-  <div class="range-test-container">
+  <div class="range-demo-container">
     <cRange v-model="value" :disabled="false">
 <!--      <div slot="start"-->
 <!--           style="width: 3rem; height: 3rem;background: red;"-->
@@ -29,7 +29,7 @@
   import cRange from '@/components/range/c-range'
 
   export default {
-    name: 'range-test',
+    name: 'range-demo',
     components: {
       cRange,
     },
@@ -49,6 +49,6 @@
 </script>
 
 <style lang="scss" scoped>
-  .range-test-container {
+  .range-demo-container {
   }
 </style>

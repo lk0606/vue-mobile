@@ -21,11 +21,6 @@ export default new Router({
       component: () => import('./views/test/test.vue')
     },
     {
-      path: '/origin-table',
-      name: 'origin-table',
-      component: () => import('./views/test/origin-table.vue')
-    },
-    {
       path: '/iscroll-table-test',
       name: 'iscroll-table-test',
       component: () => import('./views/test/iscroll-table.vue')
@@ -41,11 +36,6 @@ export default new Router({
       component: () => import('./views/test/popup.vue')
     },
     {
-      path: '/range-dev',
-      name: 'range-dev',
-      component: () => import('./components/range/c-range.vue')
-    },
-    {
       path: '/range-demo',
       name: 'range-demo',
       component: () => import('./components/range/range-demo.vue')
@@ -54,6 +44,11 @@ export default new Router({
       path: '/table-demo',
       name: 'table-demo',
       component: () => import('./components/table/table-demo.vue')
+    },
+    {
+      path: '/index-list',
+      name: 'index-list',
+      component: () => import('./components/index-list/index.vue')
     }
   ]
 })

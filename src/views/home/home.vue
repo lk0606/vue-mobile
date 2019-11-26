@@ -21,11 +21,6 @@ export default Vue.extend({
       return {
         cell: [
           {
-            title: '原生滚动',
-            url: '/origin-table',
-            rightText: '头部固定'
-          },
-          {
             title: 'translate滚动',
             url: '/iscroll-table-test',
             rightText: '头部侧边可以固定'
@@ -46,11 +41,6 @@ export default Vue.extend({
             rightText: 'popup测试'
           },
           {
-            title: 'range开发',
-            url: '/range-dev',
-            rightText: 'range开发'
-          },
-          {
             title: 'range调用',
             url: '/range-demo',
             rightText: 'range调用'
@@ -59,6 +49,11 @@ export default Vue.extend({
             title: 'table调用',
             url: '/table-demo',
             rightText: 'table调用'
+          },
+          {
+            title: 'index-list',
+            url: '/index-list',
+            rightText: '索引'
           },
         ]
       }
