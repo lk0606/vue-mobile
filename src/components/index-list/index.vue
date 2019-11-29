@@ -120,8 +120,6 @@
                 const changeDomList = document.querySelectorAll('.widget-list-wrap')
                 const scrollY = window.scrollY
 
-                // let index
-
                 if(changeDomList && this.$refs.tab) {
                     for(let i in changeDomList) {
                         const index = parseInt(i)
